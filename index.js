@@ -38,7 +38,12 @@ app.post('/move', function(req, res) {
   res.json(move);
 });
 
-app.use('/static', express.static('static'))
+app.use('/static', express.static('static')) // Host static assets from /static
+
+// For debugging: if you point the browser at your app this shows server returns
+app.get('/', (req, res) => {
+  res.send('Send POST requests to `/START` or `/MOVE` to play.')
+})
 
 var PORT = process.env.PORT ? process.env.PORT : 9000;
 app.listen(PORT, function() {
